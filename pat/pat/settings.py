@@ -88,6 +88,8 @@ DATABASES = {
         'NAME':'pat',
         'USER':'root',
         'HOST':'127.0.0.1',
+        #服务器上密码
+        # 'password':'13579wjwWOW',
         'PORT':'3306',
         'charset':'utf8',
         'OPTIONS':{

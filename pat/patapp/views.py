@@ -1,12 +1,8 @@
 import random
-from msilib.schema import ListView
 
-from django_filters.views import BaseFilterView
-from django_filters.rest_framework import DjangoFilterBackend
-from django.contrib.auth.backends import ModelBackend
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.hashers import make_password
-from django.db.models import Q
+
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect,HttpResponse
 from django.contrib.auth.decorators import login_required

@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser, Group, Permission, User
+from django.contrib.auth.models import  User
 # Create your models here.
 
 class UserExtension(models.Model):
@@ -18,7 +18,7 @@ class UserExtension(models.Model):
     phone=models.CharField(max_length=100,null=True,blank=True)
     birthday = models.DateField(null=True, blank=True,)
     image = models.ImageField( default=u"media/default.png", max_length=1000)
-    gender = models.CharField(max_length=10, choices=SEX,default='未知')
+    gender = models.CharField(choices=SEX,default='未知')
     address = models.CharField(max_length=500, blank=True,null=True)
     aboutme = models.TextField(blank=True, default='该用户还没输入个人简介',null=True)
     like=models.CharField(max_length=10,choices=pat,null=True,blank=True)
