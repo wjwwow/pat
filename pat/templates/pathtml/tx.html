@@ -1,0 +1,43 @@
+{% extends 'pathtml/user-info.html' %}
+ {% block infor %}
+   <div class="post-details-content bg-white mb-30 p-30 box-shadow">
+                        <div class="blog-content">
+                            <h4 class="post-title">/media/{{ user.username }}<span style="position:relative;left:70%"><p>头像：</span></h4>
+
+							<div class="blog-thumb mb-30">
+                            <img src="{{profile.image.url}}" style="float: right;width: 15em;height:15em" alt="">
+
+
+                        </div>
+<form enctype="multipart/form-data" method="post" action=".">
+                                 {% csrf_token %}
+     <input type="file" style="position: relative ;top:15em;left: 30em" name="image" id="image">
+							<p><tr><td>性别：</td>
+                                <input type="radio" id="gender" name="gender" value="男" checked="checked">男
+                                <input type="radio"id="gender" name="gender"value="女" >女
+                            </tr></p>
+
+							<div>
+							<p><tr><td>生日：</td>
+                                 <td><input type="date" id="birthday" name="birthday" value="{{ profile.birthday|date:"Y-m-d" }}"></td></tr></p>
+							</div>
+							
+							<div>
+								<p>城市：<td><input type="text" id="address" name="address" value="{{ profile.address }}"></td></p>
+							</div>	
+											
+							<p>手机：<td colspan="3"><td><input maxlength="11" oninput="value=value.replace(/[^\d]/g,'')" type="text" id="phone" name="phone" value="{{ profile.phone}}"></td>
+										</p>
+                            	<p><tr><td>兴趣：<td colspan="3"><td>
+                                    <input type="radio" id="like" name="like" value="猫和狗" checked="checked">猫和狗
+                                    <input type="radio" id="like" name="like" value="猫" checked="checked">猫
+                                    <input type="radio"id="like" name="like" value="狗" >狗
+                                </td></td><label class="mr-4"></p>
+                                    </tr>
+							简介：<p><textarea name="aboutme" id="about" type="text" rows="6" cols="50">{{ profile.aboutme }}</textarea></p>
+
+
+											</br>
+											<button type="submit" class="btn mag-btn mt-30">保存</button>
+                           </form>
+{% endblock %}

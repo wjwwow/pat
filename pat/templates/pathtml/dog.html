@@ -1,0 +1,80 @@
+{% extends 'pathtml/single.html' %}
+{% load blog_extras %}
+{% load widget_tweaks %}
+{% block url %}<li class="breadcrumb-item"><a href="/dog/">狗狗列表</a></li>{% endblock %}
+{% block title %}狗狗大全{% endblock %}
+
+{% block zl %}狗狗{% endblock %}
+{% block content %}
+ <div class="col-12 col-xl-8">
+    <div class="post-details-content bg-white mb-30 p-30 box-shadow">
+        <div class="well">
+<form action="" role="search" method="get">
+    <div class="input-group col-md-12">
+{% with form=myFilter.form %}
+        {% for field in form.visible_fields %}
+<div class="form-group col-sm-5 col-md-5">
+{{ field.label_tag }}
+              {% render_field field class="form-control" %}
+</div>
+{% endfor %}
+
+<span class="input-group-btn">
+            <button class="btn btn-info form-control " type="submit" value="submit">筛选
+</button>
+        </span>
+    </div>
+
+{% endwith %}
+</form>
+        </div>
+
+
+
+    <p>共查找到{{ total_cat }}条狗狗</p>
+
+        <div class="container" >
+         <div class="row">
+
+    {% for i in page_obj %}
+
+        	<div class="single-product">
+							<img class="img-fluid" src="{{ i.image }}" alt="">
+							<div class="product-details">
+								<a href="/dog/detail/{{ i.id }}">{{ i.name }}</a>
+							</div>
+								</div>
+
+    {% endfor %}
+
+         </div>
+         </div>
+    {% if is_paginated %}
+<ul class="pagination">
+{% if page_obj.has_previous %}
+<li class="page-item"><a class="page-link" href="?{% param_replace page=page_obj.previous_page_number %}">&laquo;</a></li>
+{% else %}
+<li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+{% endif %}
+
+         {% for i in paginator.page_range %}
+         {% if page_obj.number == i %}
+<li class="page-item active"><span class="page-link"> {{ i }} <span class="sr-only">(current)</span></span></li>
+{% else %}
+<li class="page-item"><a class="page-link" href="?{% param_replace page=i %}">{{ i }}</a></li>
+{% endif %}
+         {% endfor %}
+
+         {% if page_obj.has_next %}
+<li class="page-item"><a class="page-link" href="?{% param_replace page=page_obj.next_page_number %}">&raquo;</a></li>
+{% else %}
+<li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+{% endif %}
+</ul>
+{% endif %}
+    </div>
+
+</div>
+
+	{% include 'pathtml/hotpat.html' %}
+                    {% endblock %}

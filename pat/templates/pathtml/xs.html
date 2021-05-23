@@ -1,0 +1,32 @@
+
+ {% extends 'pathtml/user-info.html' %}
+ {% block infor %}
+   <div class="post-details-content bg-white mb-30 p-30 box-shadow">
+                        <div class="blog-content">
+                            <h4 class="post-title">{{ user.username }}<span style="position:relative;left:70%"><p>头像：</span></h4>
+							<div class="blog-thumb mb-30">
+                            <img src="{{profile.image.url}}" style="float: right;width: 15em;height:15em" alt="">
+
+
+                        </div> 
+							<p><tr><td>性别：</td>
+                                {{ profile.gender }}</tr></p>
+							<div>
+							<p><tr><td>生日：</td>
+                                {{ profile.birthday|date:"Y-m-d" }}</tr></p>
+							</div>
+							
+							<div>
+								<p>城市：{{ profile.address }}</p>
+							</div>	
+											
+							<p>手机：</td><td colspan="3">{{ profile.phone}}
+								<div>			</p>
+                            	<p><tr><td>兴趣：{{ profile.like }}</td><label class="mr-4"></p>
+                                    </tr>
+							简介：<p><textarea readonly="readonly" rows="6" cols="50">{{ profile.aboutme }}</textarea></p>
+
+                            <a href="/change" style="float: right"><button type="submit" class="btn mag-btn mt-30">修改密码</button></a>
+											</br>
+											<a href="/tx/{{user.id}}"><button type="submit" class="btn mag-btn mt-30">修改个人资料</button></a>
+{% endblock %}

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>{{ user.username}}的个人资料</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/static/images/core-img/favicon.ico">
+
+    <!-- Stylesheet -->
+      <link rel="stylesheet" href="/static/css/style.css">
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="/static/js/city.js"></script>
+
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
+
+    {% include 'pathtml/navbar.html' %}
+
+  
+    <!-- ##### Breadcrumb Area Start ##### -->
+    <section class="breadcrumb-area bg-img bg-overlay" style="background-image: url(/static/images/bg-img/49.jpg);">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcrumb-content">
+                      <h2>个 人 资 料</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Breadcrumb Area End ##### -->
+
+    <!-- ##### Breadcrumb Area Start ##### -->
+    <div class="mag-breadcrumb py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i> 首页</a></li>
+                            <li class="breadcrumb-item"><a href="#">个人资料</a></li>
+<!--                            <li class="breadcrumb-item active" aria-current="page">狗狗</li>-->
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Breadcrumb Area End ##### -->
+
+    <!-- ##### Post Details Area Start ##### -->
+    <section class="post-details-area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <!-- Post Details Content Area -->
+                <div class="col-12 col-xl-8"> <!-- Sidebar Widget -->
+
+
+                   {% block infor %}
+                    {% endblock %}
+
+
+                            
+
+
+                        </div>
+					</div>
+					<!-- Sidebar Widget -->
+
+                
+			</div>
+			</div>
+			</section> 
+<!-- ##### Post Details Area End ##### -->
+ 
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="footer-area">
+        <div class="container">
+            <div class="row">
+
+        <!-- Copywrite Area -->
+        <div class="copywrite-area"> 
+            <div class="container">
+                <div class="row">
+                    <!-- Copywrite Text -->
+                    <div class="col-12 col-sm-6">
+                        <p class="copywrite-text"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+本网站只可用作学习和参考，不可作为商业用途，如有侵权，请联系删除  <em class="fa fa-heart-o" aria-hidden="true"></em> by19信管<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                    </div>
+                    <div class="col-12 col-sm-6" style="float: right">
+                        <nav class="footer-nav">
+                            <ul>
+                                <li><a href="#">联系我们</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ##### Footer Area End ##### -->
+
+    <!-- ##### All Javascript Script ##### -->
+    <!-- jQuery-2.2.4 js -->
+<script src="/static/js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="/static/js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="/static/js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="/static/js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="/static/js/active.js"></script>
+<script type="text/javascript">
+									$(function () {
+										initProvince("110000");
+									})
+									function initProvince(provinceBack) {
+										var optionStr = "<option value=\"-1\">请选择省</option>";
+										for (var province in citys) {
+											optionStr += "<option value=\"" + province + "\"";
+											if (province == provinceBack) {
+												optionStr += "selected='selected'";
+											}
+											optionStr += ">" + citys[province].n + "</option>";
+										}
+										$("#province").append(optionStr);
+										$("#city").empty();
+										optionStr = "<option value=\"-1\">请选择市</option>";
+										$("#city").append(optionStr);
+									}
+									function selectCityByPid() {
+										var provinceCode=$("#province").val();
+										$("#city").empty();
+										var optionStr = "<option value=\"-1\">请选择市</option>";
+										var cityList=citys[provinceCode].c
+										for (var city in cityList) {
+											optionStr += "<option value=\"" + city;
+											optionStr += "\">" + cityList[city].n + "</option>";
+										}
+										$("#city").append(optionStr);
+									}
+								</script>
+			<script language="JavaScript"><!--   
+   function YYYYMMDDstart()   
+   {   
+           MonHead = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];   
+    
+           //先给年下拉框赋内容   
+           var y  = new Date().getFullYear();   
+           for (var i = (y-50); i < (y+30); i++) //以今年为准，前50年，后30年   
+                   document.reg_testdate.YYYY.options.add(new Option(" "+ i +" 年", i));   
+    
+           //赋月份的下拉框   
+           for (var i = 1; i < 13; i++)   
+                   document.reg_testdate.MM.options.add(new Option(" " + i + " 月", i));   
+    
+           document.reg_testdate.YYYY.value = y;   
+           document.reg_testdate.MM.value = new Date().getMonth() + 1;   
+           var n = MonHead[new Date().getMonth()];   
+           if (new Date().getMonth() ==1 && IsPinYear(YYYYvalue)) n++;   
+                writeDay(n); //赋日期下拉框Author:meizz   
+           document.reg_testdate.DD.value = new Date().getDate();   
+   }   
+   if(document.attachEvent)   
+       window.attachEvent("onload", YYYYMMDDstart);   
+   else   
+       window.addEventListener('load', YYYYMMDDstart, false);   
+   function YYYYDD(str) //年发生变化时日期发生变化(主要是判断闰平年)   
+   {   
+           var MMvalue = document.reg_testdate.MM.options[document.reg_testdate.MM.selectedIndex].value;   
+           if (MMvalue == ""){ var e = document.reg_testdate.DD; optionsClear(e); return;}   
+           var n = MonHead[MMvalue - 1];   
+           if (MMvalue ==2 && IsPinYear(str)) n++;   
+                writeDay(n)   
+   }   
+   function MMDD(str)   //月发生变化时日期联动   
+   {   
+        var YYYYvalue = document.reg_testdate.YYYY.options[document.reg_testdate.YYYY.selectedIndex].value;   
+        if (YYYYvalue == ""){ var e = document.reg_testdate.DD; optionsClear(e); return;}   
+        var n = MonHead[str - 1];   
+        if (str ==2 && IsPinYear(YYYYvalue)) n++;   
+       writeDay(n)   
+   }   
+   function writeDay(n)   //据条件写日期的下拉框   
+   {   
+           var e = document.reg_testdate.DD; optionsClear(e);   
+           for (var i=1; i<(n+1); i++)   
+                e.options.add(new Option(" "+ i + " 日", i));   
+   }   
+   function IsPinYear(year)//判断是否闰平年   
+   {     return(0 == year%4 && (year%100 !=0 || year%400 == 0));}   
+   function optionsClear(e)   
+   {   
+        e.options.length = 1;   
+   }   
+   //--></script>
+			
+
+</body>
+
+</html>

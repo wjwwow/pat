@@ -1,0 +1,108 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	{% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>找回密码</title>
+	<!--
+    Template 2105 Input
+	http://www.tooplate.com/view/2105-input
+	-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/materialize.min.css">
+    <link rel="stylesheet" href="/static/css/tooplate.css">
+		<link rel="stylesheet" href="{% static "css/reset.css" %}" />
+	<link rel="stylesheet" href="{% static "css/user.css" %}" />
+    <script src="{% static "js/jquery.min.js" %}"></script>
+    <script src="{% static "js/user.js" %}"></script>
+</head>
+
+<body id="register">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                <header class="mb-5">
+                    <h3 class="mt-0 white-text">找 回 密 码</h3>
+                    <p class="grey-text mb-4">为了您能及时找回密码并登录，请注意查看邮箱。</p>
+                    <p class="grey-text">找回密码功能为重置密码，请记住你的新密码哦！ </p>
+                </header>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                <form action="{% url 'findpwd' %}" method="post" id="Login" name="Login" class="tm-signup-form">
+                    {% csrf_token %}
+
+					<div class="input-field">
+                        <input placeholder="账号" id="username" name="username" type="text" class="validate">
+                  </div>
+
+					 {% if password %}
+                    <div class="input-field">
+                        <input placeholder="新密码" id="password1" name="password1" type="password" class="validate">
+						<span style="color: aliceblue"></span>
+                    </div>
+                    <div class="input-field">
+                        <input placeholder="确认密码" id="password2" name="password2" type="password" class="validate">
+						<span style="color: aliceblue"></span>
+                    </div>
+				{% endif %}
+                {% if VCodeInfo %}
+										<div class="input-field">
+                        <input placeholder="验证码" id="authcode" name="VCode" type="text" class="validate">
+						<span style="color: aliceblue"></span>
+                    </div>
+					                {% endif %}
+                    <div class="text-right mt-4">
+                        <span style="color: aliceblue">{{ tips }}</span>
+                        <button type="submit" class="waves-effect btn-large btn-large-white px-4 tm-border-radius-0" value="{{ button }}">{{ button }}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <footer class="row tm-mt-big mb-3">
+            <div class="col-xl-12">
+                <p class="text-center grey-text text-lighten-2 tm-footer-text-small">
+                    Copyright &copy; 2018 阿猫阿狗
+
+<!--
+                    - <a rel="nofollow" href="http://www.tooplate.com/view/2105-input">Input</a> by
+                    <a rel="nofollow" href="http://tooplate.com" class="tm-footer-link">aaa</a>
+-->
+                </p>
+            </div>
+        </footer>
+    </div>
+	<script type="text/javascript">
+	window.onload = function() {
+		var config = {
+			vx : 4,
+			vy : 4,
+			height : 2,
+			width : 2,
+			count : 100,
+			color : "121, 162, 185",
+			stroke : "100, 200, 180",
+			dist : 6000,
+			e_dist : 20000,
+			max_conn : 10
+		};
+		CanvasParticle(config);
+	}
+</script>
+<script src="{% static "js/canvas-particle.js" %}"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('select').formSelect();
+        });
+    </script>
+</body>
+
+</html>
+

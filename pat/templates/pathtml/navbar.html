@@ -1,0 +1,115 @@
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+<header class="header-area">
+        <!-- Navbar Area -->
+        <div class="mag-main-menu" id="sticker">
+            <div class="classy-nav-container breakpoint-off">
+                <!-- Menu -->
+                <nav class="classy-navbar justify-content-between" id="magNav">
+
+                    <!-- Nav brand -->
+                    <a href="index.html" class="nav-brand"><span style='font-size-adjust: auto'>阿猫阿狗</span></a>
+
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <!-- Nav Content -->
+                    <div class="nav-content d-flex align-items-center">
+                        <div class="classy-menu">
+
+                            <!-- Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul>
+                                    <li class="active"><a href="/">首页</a></li>
+
+                                    <li><a href="#">宠物资料</a>
+                                        <ul class="dropdown">
+                                            <li><a href="/dog/">狗狗</a></li>
+                                            <li><a href="/cat/">猫咪</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+<!--                                        <div class="megamenu">-->
+<!--                                            <ul class="single-mega cn-col-4">-->
+<!--
+                                                <li><a href="index.html">Home</a></li>
+                                                <li><a href="archive.html">Archive</a></li>
+                                                <li><a href="video-post.html">Single Video Post</a></li>
+                                                <li><a href="single-post.html">Single Post</a></li>
+                                                <li><a href="about.html">About Us</a></li>
+                                                <li><a href="contact.html">Contact</a></li>
+                                                <li><a href="login.html">Login</a></li>
+                                            </ul>
+-->
+<!--
+                                            <ul class="single-mega cn-col-4">
+                                                <li><a href="index.html">Home</a></li>
+                                                <li><a href="archive.html">Archive</a></li>
+                                                <li><a href="video-post.html">Single Video Post</a></li>
+                                                <li><a href="single-post.html">Single Post</a></li>
+                                                <li><a href="about.html">About Us</a></li>
+                                                <li><a href="contact.html">Contact</a></li>
+                                                <li><a href="login.html">Login</a></li>
+                                            </ul>
+                                            <ul class="single-mega cn-col-4">
+                                                <li><a href="index.html">Home</a></li>
+                                                <li><a href="archive.html">Archive</a></li>
+                                                <li><a href="video-post.html">Single Video Post</a></li>
+                                                <li><a href="single-post.html">Single Post</a></li>
+                                                <li><a href="about.html">About Us</a></li>
+                                                <li><a href="contact.html">Contact</a></li>
+                                                <li><a href="login.html">Login</a></li>
+                                            </ul>
+                                            <ul class="single-mega cn-col-4">
+                                                <li><a href="index.html">Home</a></li>
+                                                <li><a href="archive.html">Archive</a></li>
+                                                <li><a href="video-post.html">Single Video Post</a></li>
+                                                <li><a href="single-post.html">Single Post</a></li>
+                                                <li><a href="about.html">About Us</a></li>
+                                                <li><a href="contact.html">Contact</a></li>
+                                                <li><a href="login.html">Login</a></li>
+                                            </ul>
+-->
+<!--                                        </div>-->
+                                    </li>
+
+                                    <li><a href="/userinfo/{{ user.id }}">个人资料</a></li>
+                                </ul>
+                            </div>
+                            <!-- Nav End -->
+                        </div>
+
+                        <div class="top-meta-data d-flex align-items-center">
+                            <!-- Top Search Area -->
+                            <div class="top-search-area">
+
+                                <form action="." method="post">
+                                    {% csrf_token %}
+
+                                    <input type="search" name="name" id="mane" placeholder="输入后可按回车键搜索...">
+{#                                    <input type="search" name="top-search" id="topSearch" placeholder="输入后可按回车键搜索...">#}
+                                    <button  type="submit" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                </form>
+                            </div>
+                             {% if request.user.is_authenticated %}
+                                 <p style="position: center">欢迎你！{{ request.user }}</p>
+                                 <a href="/logout" class="login-btn">登出</a>
+                            <!-- Login -->
+                            {% else %}
+                            <a href="/login" class="login-btn">登录</a>
+                             <a href="/register" class="login-btn">注册</a>
+                            <!-- Submit Video -->
+                            {% endif %}
+                            <a href="#" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span> <span class="video-text">发布帖子</span></a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>

@@ -1,0 +1,52 @@
+{% extends 'pathtml/single.html' %}
+{% block url %}
+   {% if dog_detail.name %}
+    <li class="breadcrumb-item"><a href="/dog/">狗狗列表</a></li>
+    {% elif cat_detail.name %}
+     <li class="breadcrumb-item"><a href="/cat/">猫咪列表</a></li>
+    {% endif %}
+{% endblock %}
+{% block title %}{{ cat_detail.name }}{{ dog_detail.name }}{% endblock %}
+
+{% block zl %}{{ cat_detail.name }}{{ dog_detail.name }}{% endblock %}
+{% block content %}
+
+    <section class="post-details-area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <!-- Post Details Content Area -->
+                <div class="col-12 col-xl-8"> <!-- Sidebar Widget -->
+                
+					
+					                    <div class="post-details-content bg-white mb-30 p-30 box-shadow">
+                        <div class="blog-content">
+                            <h4 class="post-title">{{ cat_detail.name }}{{ dog_detail.name }}</h4>
+							<div class="blog-thumb mb-30">
+                            <img src="{{ cat_detail.image }}{{ dog_detail.image }}" style="float: right;width: 80%" alt="">
+                        </div> 
+							<p>品种：{{ cat_detail.name }}{{ dog_detail.name }}</p>
+							<p>寿命：{{ cat_detail.life }}{{ dog_detail.life }}</p>
+							<p>祖籍：{{ cat_detail.home }}{{ dog_detail.home }}</p>
+							<p>毛长：{{ cat_detail.hair }}{{ dog_detail.hair }}</p>
+							.
+							                        
+                            <p>饲养方法：{{ cat_detail.breed }}{{ dog_detail.breed }}</p>
+							<p>性格特点：{{ cat_detail.character }}{{ dog_detail.character }}</p>
+
+
+                            
+
+
+                        </div>
+                    </div>
+                        <!-- Sidebar Widget -->
+
+                </div>
+			{% include 'pathtml/hotpat.html' %}
+            </div>
+        </div>
+    </section>
+    <!-- ##### Post Details Area End ##### -->
+
+    <!-- ##### Footer Area Start ##### -->
+  {% endblock %}
